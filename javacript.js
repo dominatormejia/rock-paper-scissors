@@ -45,39 +45,62 @@ function playRound(humanChoice, computerChoice) {
   humanChoice = humanChoice?.toLowerCase();
 
   if (humanChoice === computerChoice) {
-    console.log("Oh my, it's a tie!");
+    return "tie";
   } else if (humanChoice === "rock") {
     if (computerChoice === "scissors") {
-      console.log("Oh wow! You won! Congrats!");
-      humanScore++;
+      return "won";
     } else if (computerChoice === "paper") {
-      console.log("Dang it, you lost.");
-      computerScore++;
+      return "lost";
     }
   } else if (humanChoice === "paper") {
     if (computerChoice === "rock") {
-      console.log("Oh wow! You won! Congrats!");
-      humanScore++;
+      return "won";
     } else if (computerChoice === "scissors") {
-      console.log("Dang it, you lost.");
-      computerScore++;
+      return "lost";
     }
   } else if (humanChoice === "scissors") {
     if (computerChoice === "paper") {
-      console.log("Oh wow! You won! Congrats!");
-      humanScore++;
+      return "won";
     } else if (computerChoice === "rock") {
-      console.log("Dang it, you lost.");
-      computerScore++;
+      return "lost";
     }
   }
   // console.log(humanChoice);
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+const humanChoice = getHumanChoice();
+const computerChoice = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
+// playRound(humanChoice, computerChoice);
 
-// console.log(humanScore);
-// console.log(computerScore);
+function playGame() {
+  let result = playRound(humanChoice, computerChoice);
+
+  if ((result = "won")) {
+    console.log("Oh wow! You won! Congrats!");
+    humanScore++;
+  } else if ((result = "lost")) {
+    console.log("Dang it, you lost.");
+    computerScore++;
+  } else if ((result = "tie")) {
+    console.log("Oh my, it's a tie!");
+  }
+
+  if (humanScore >= 3) {
+    alert("You win!");
+  } else if (computerScore >= 3) {
+    alert("Computer Wins!");
+  }
+}
+
+// playGame()
+console.log(humanScore);
+console.log(computerScore);
+
+function game() {
+  for (i = 1; humanScore < 3 && computerScore < 3; i++) {
+    playGame();
+  }
+}
+
+game();
