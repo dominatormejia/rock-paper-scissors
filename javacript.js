@@ -19,8 +19,9 @@ function getHumanChoice() {
   return lowerCase?.toLowerCase();
 }
 
-// Reworked and simplified choice functions
+// ^Reworked and simplified choice functions^
 
+// Game logic using if..else to decide round winner
 function gameLogic(humanChoice, computerChoice) {
   let result;
 
@@ -47,26 +48,33 @@ function gameLogic(humanChoice, computerChoice) {
   }
 
   if (result === 0) {
-    roundResult = console.log("Wow that's a tie!");
+    console.log("Wow that's a tie!");
   } else if (result === 1) {
-    roundResult = console.log("Hmm, you lost this round.");
+    console.log("Hmm, you lost this round.");
     ++computerScore;
   } else if (result === 2) {
-    roundResult = console.log("You won this round!");
+    console.log("You won this round!");
     ++humanScore;
   }
-  console.log(humanScore);
-  console.log(computerScore);
+
+  let humanScoreAnnounce = `My Score: ${humanScore}`;
+  let computerScoreAnnounce = `Computer Score: ${computerScore}`;
+  console.log(humanScoreAnnounce);
+  console.log(computerScoreAnnounce);
 }
 
-// gameLogic(humanChoice, computerChoice);
+// Loop function and game decider
 
 function gameLoop(getHumanChoice, getComputerChoice, gameLogic) {
-  let rounds = 10;
+  let rounds = 15;
   for (let i = 0; i < rounds; i++) {
     const humanChoice = getHumanChoice();
     const computerChoice = getComputerChoice();
     gameLogic(humanChoice, computerChoice);
+
+    console.log(`Player Choice: ${humanChoice}`);
+    console.log(`Computer Choice: ${computerChoice}`);
+    console.log("----------------------");
 
     if (humanScore === 3) {
       console.log("You are the winner!");
@@ -77,4 +85,5 @@ function gameLoop(getHumanChoice, getComputerChoice, gameLogic) {
     }
   }
 }
+
 gameLoop(getHumanChoice, getComputerChoice, gameLogic);
