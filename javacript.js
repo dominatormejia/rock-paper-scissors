@@ -31,10 +31,15 @@ function getHumanChoice() {
   //     return "Scissors" ;
 }
 
+// function playGame (){}
+
 let humanScore = 0;
 let computerScore = 0;
 
-// This went through several iterations. I found this method the easiest to wrap my head around
+// This went through several iterations. I found this method the
+//  easiest to wrap my head around. I know i could have opted for
+// ternary, but it would have broke my brain more. it might not be
+//  the cleanest and lots of if..else, but it currently works lol
 
 function playRound(humanChoice, computerChoice) {
   humanChoice = humanChoice?.toLowerCase();
@@ -74,5 +79,5 @@ const computerSelection = getComputerChoice();
 
 playRound(humanSelection, computerSelection);
 
-console.log(humanScore++);
-console.log(computerScore++);
+// console.log(humanScore);
+// console.log(computerScore);
