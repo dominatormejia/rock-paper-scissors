@@ -86,4 +86,4 @@ function gameLoop(getHumanChoice, getComputerChoice, gameLogic) {
   }
 }
 
-gameLoop(getHumanChoice, getComputerChoice, gameLogic);
+// gameLoop(getHumanChoice, getComputerChoice, gameLogic);
