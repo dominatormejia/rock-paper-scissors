@@ -4,14 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
-    <script src="javacript.js"></script>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>This is a console Rock Paper Scissors game</h1>
+    <div class="title-pic">
+      <div class="play-container">
+        <h1 class="header">Rock Paper Scissors</h1>
+        <button class="play">Play Now</button>
+      </div>
+    </div>
 
-    <button onclick="gameLoop(getHumanChoice, getComputerChoice, gameLogic)">
-      Start
-    </button>
-    <p style="font-weight: 700; color: red">Open console before clicking</p>
+    <div class="hidden back-img">
+      <div class="title-container">
+        <h1 class="hidden secondTitle">Rock Paper Scissors</h1>
+      </div>
+
+      <div class="hidden output-container">
+        <div class="hidden outputs">Outputs</div>
+      </div>
+      <div class="score-container" id="score-containerId">
+        <div class="hidden human-score" id="you">Your Score: 0</div>
+        <div class="hidden computer-score" id="comp">Computer Score: 0</div>
+      </div>
+
+      <div class="choice-display" id="choice-displayId">
+        <div class="hidden human-choice-display">
+          You Choice: &nbsp &nbsp &nbsp
+        </div>
+        <div class="hidden computer-choice-display">
+          Computer Choice: &nbsp &nbsp &nbsp
+        </div>
+      </div>
+
+      <div class="choice-container">
+        <button class="hidden humanChoice" id="rock">Rock</button>
+        <button class="hidden humanChoice" id="paper">Paper</button>
+        <button class="hidden humanChoice" id="scissors">Scissors</button>
+      </div>
+      <div class="play-contained">
+        <button class="hidden play-again">Play Again</button>
+      </div>
+    </div>
+
+    <script src="javacript.js"></script>
   </body>
 </html>

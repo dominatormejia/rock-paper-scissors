@@ -1,0 +1,170 @@
+@font-face {
+  font-family: "Cyberpunk";
+  src: url(fonts.css/Cyberpunk.ttf);
+}
+* {
+  border: 1px, solid, black;
+  font-family: "Cyberpunk";
+  font-size: 25px;
+}
+
+.hidden {
+  display: none;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 300px;
+  font-size: 40px;
+}
+
+.play-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-width: auto;
+  flex-grow: 1;
+}
+
+.play {
+  padding: 10px;
+  width: 200px;
+  background-color: yellow;
+  color: black;
+  border: 1px, solid, grey;
+  font-size: 25px;
+}
+
+.play:hover {
+  background-color: black;
+  color: white;
+}
+
+.title-pic {
+  background-image: url(imgs/title.webp);
+  background-size: cover;
+  background-position: center;
+}
+
+.back-img {
+  background-image: url(imgs/back.webp);
+  background-size: cover;
+  background-position: center;
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+}
+
+.secondTitle {
+  font-size: 50px;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  background: gray;
+  width: fit-content;
+  background: linear-gradient(to right, blueviolet, cyan);
+}
+
+.output-container {
+  display: flex;
+  justify-content: center;
+}
+
+.outputs {
+  font-size: 35px;
+  background: gray;
+  width: fit-content;
+  background: linear-gradient(to right, blueviolet, cyan);
+}
+
+.score-container {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+
+.human-score {
+  background: gray;
+  width: fit-content;
+  margin-right: 100px;
+  background: linear-gradient(to right, blueviolet, cyan);
+}
+
+.computer-score {
+  background: gray;
+  background: linear-gradient(to right, blueviolet, cyan);
+  width: fit-content;
+}
+
+.choice-display {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 25px;
+}
+
+.human-choice-display {
+  background: gray;
+  width: fit-content;
+  background: linear-gradient(to right, blueviolet, cyan);
+}
+
+.computer-choice-display {
+  background: gray;
+  width: fit-content;
+  background: linear-gradient(to right, blueviolet, cyan);
+}
+
+.choice-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+
+#rock,
+#paper,
+#scissors {
+  width: 300px;
+  height: auto;
+  margin-top: 50px;
+  margin-bottom: 25px;
+  background-color: grey;
+  /* width: fit-content; */
+}
+
+#rock:hover {
+  background: linear-gradient(to right, blueviolet, cyan);
+  color: white;
+}
+#paper:hover {
+  background: linear-gradient(to right, blueviolet, cyan);
+  color: white;
+}
+#scissors:hover {
+  background: linear-gradient(to right, blueviolet, cyan);
+  color: white;
+}
+.play-again:hover {
+  background: linear-gradient(to right, blueviolet, cyan);
+  color: white;
+}
+
+.play-contained {
+  display: flex;
+  justify-content: center;
+}
+.play-again {
+  font-size: 25px;
+  background: grey;
+}

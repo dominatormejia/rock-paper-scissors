@@ -2,88 +2,142 @@
 let humanScore = 0;
 let computerScore = 0;
 
+const computerChoiceDisplay = document.querySelector(
+  ".computer-choice-display"
+);
+const play = document.querySelector(".play");
+const titleCard = document.querySelector(".title-pic");
+const outputs = document.querySelector(".outputs");
+const humanTally = document.querySelector(".human-score");
+const computerTally = document.querySelector(".computer-score");
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+const humanChoiceDisplay = document.querySelector(".human-choice-display");
+const playAgain = document.querySelector(".play-again");
+const title = document.querySelector(".secondTitle");
+const img = document.querySelector(".back-img");
+
 function getComputerChoice() {
   randomNumber = Math.trunc(Math.random() * 3);
 
   if (randomNumber === 0) {
+    computerChoiceDisplay.textContent = "Computer Choice: Rock";
     return "rock";
   } else if (randomNumber === 1) {
+    computerChoiceDisplay.textContent = "Computer Choice: Scissors";
     return "scissors";
   } else if (randomNumber === 2) {
+    computerChoiceDisplay.textContent = "Computer Choice: Paper";
     return "paper";
   }
 }
 
-function getHumanChoice() {
-  let lowerCase = prompt("Rock, Paper, or Scissors", "");
-  return lowerCase?.toLowerCase();
-}
-
-// ^Reworked and simplified choice functions^
-
 // Game logic using if..else to decide round winner
-function gameLogic(humanChoice, computerChoice) {
+function playRound(humanChoice, computerChoice) {
   let result;
 
   if (humanChoice === computerChoice) {
     result = 0;
-  } else if (humanChoice === "rock") {
-    if (computerChoice === "scissors") {
-      result = 2;
-    } else if (computerChoice === "paper") {
-      result = 1;
-    }
-  } else if (humanChoice === "paper") {
-    if (computerChoice === "rock") {
-      result = 2;
-    } else if (computerChoice === "scissors") {
-      result = 1;
-    }
-  } else if (humanChoice === "scissors") {
-    if (computerChoice === "paper") {
-      result = 2;
-    } else if (computerChoice === "rock") {
-      result = 1;
-    }
+  } else if (humanChoice === "rock" && computerChoice === "scissors") {
+    result = 2;
+  } else if (humanChoice === "paper" && computerChoice === "rock") {
+    result = 2;
+  } else if (humanChoice === "scissors" && computerChoice === "paper") {
+    result = 2;
+  } else {
+    result = 1;
   }
 
   if (result === 0) {
-    console.log("Wow that's a tie!");
+    outputs.textContent = "Wow that's a tie!";
   } else if (result === 1) {
-    console.log("Hmm, you lost this round.");
+    outputs.textContent = "Hmm, you lost this round.";
     ++computerScore;
   } else if (result === 2) {
-    console.log("You won this round!");
+    outputs.textContent = "You won this round!";
     ++humanScore;
   }
 
   let humanScoreAnnounce = `My Score: ${humanScore}`;
   let computerScoreAnnounce = `Computer Score: ${computerScore}`;
-  console.log(humanScoreAnnounce);
-  console.log(computerScoreAnnounce);
+  humanTally.textContent = humanScoreAnnounce;
+  computerTally.textContent = computerScoreAnnounce;
 }
 
 // Loop function and game decider
 
-function gameLoop(getHumanChoice, getComputerChoice, gameLogic) {
-  let rounds = 15;
-  for (let i = 0; i < rounds; i++) {
-    const humanChoice = getHumanChoice();
-    const computerChoice = getComputerChoice();
-    gameLogic(humanChoice, computerChoice);
-
-    console.log(`Player Choice: ${humanChoice}`);
-    console.log(`Computer Choice: ${computerChoice}`);
-    console.log("----------------------");
-
-    if (humanScore === 3) {
-      console.log("You are the winner!");
-      break;
-    } else if (computerScore === 3) {
-      console.log("The computer is the winner!");
-      break;
+function gameLoop() {
+  rock.addEventListener("click", () => {
+    humanChoiceDisplay.textContent = "Your Choice: Rock";
+    playRound("rock", getComputerChoice());
+    if (humanScore === 5) {
+      endGame("human");
+    } else if (computerScore === 5) {
+      endGame("computer");
     }
+  });
+  paper.addEventListener("click", () => {
+    humanChoiceDisplay.textContent = "Your Choice: Paper";
+    playRound("paper", getComputerChoice());
+    if (humanScore === 5) {
+      endGame("human");
+    } else if (computerScore === 5) {
+      endGame("computer");
+    }
+  });
+  scissors.addEventListener("click", () => {
+    humanChoiceDisplay.textContent = "Your Choice: Scissors";
+    playRound("scissors", getComputerChoice());
+    if (humanScore === 5) {
+      endGame("human");
+    } else if (computerScore === 5) {
+      endGame("computer");
+    }
+  });
+
+  function endGame(winner) {
+    if (winner === "human") {
+      outputs.textContent = "You win the game!";
+    } else if (winner === "computer") {
+      outputs.textContent = "The computer wins the game! AI rules the world!";
+    }
+    rock.disabled = true;
+    paper.disabled = true;
+    scissors.disabled = true;
+    playAgain.classList.remove("hidden");
   }
 }
 
-// gameLoop(getHumanChoice, getComputerChoice, gameLogic);
+play.addEventListener("click", () => {
+  titleCard.classList.add("hidden");
+
+  rock.classList.remove("hidden");
+  paper.classList.remove("hidden");
+  scissors.classList.remove("hidden");
+  outputs.classList.remove("hidden");
+  humanTally.classList.remove("hidden");
+  computerTally.classList.remove("hidden");
+  computerChoiceDisplay.classList.remove("hidden");
+  humanChoiceDisplay.classList.remove("hidden");
+  title.classList.remove("hidden");
+  img.classList.remove("hidden");
+
+  outputs.textContent = "Click an option to start!";
+
+  gameLoop();
+});
+
+playAgain.addEventListener("click", () => {
+  humanScore = 0;
+  computerScore = 0;
+
+  outputs.textContent = "Click an option to start!";
+  humanTally.textContent = "My Score: 0";
+  computerTally.textContent = "Computer Score: 0";
+  playAgain.classList.add("hidden");
+
+  rock.disabled = false;
+  paper.disabled = false;
+  scissors.disabled = false;
+});
